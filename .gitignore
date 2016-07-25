@@ -50,3 +50,4 @@ app/*.js
 app/*.js.map
 *.log.*
 *.log
+typings

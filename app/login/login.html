@@ -1,0 +1,19 @@
+<div class="auth-main">
+  <div class="auth-block">
+    <h1>HR Portal</h1>
+    <a routerlink="['/crisis-center']" class="auth-link">New to HR Portal? Sign up!</a>
+    <form [formGroup]="userForm" (submit)="saveUser()">
+        <div>
+            <label for="name">Email</label>
+            <input formControlName="email" id="email" />
+            <control-messages [control]="userForm.controls.email"></control-messages>
+        </div>
+        <div>
+            <label for="email">Password</label>
+            <input formControlName="password" id="password" />
+            <control-messages [control]="userForm.controls.password"></control-messages>
+        </div>
+        <button type="submit" [disabled]="!userForm.valid">Submit</button>
+    </form> 
+  </div>
+</div>
