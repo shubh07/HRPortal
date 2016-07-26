@@ -6,7 +6,7 @@ import { ROUTER_DIRECTIVES, RouterConfig, Router } from '@angular/router';
 @Component({
   selector: 'login',
   directives: [REACTIVE_FORM_DIRECTIVES, ControlMessages,ROUTER_DIRECTIVES],
-  styleUrls: ['./app/sass/css/auth.css'],
+  styleUrls: ['./node_modules/font-awesome/css/font-awesome.css'],
   templateUrl: './app/login/login.html'
 })
 export class LoginComponent {
