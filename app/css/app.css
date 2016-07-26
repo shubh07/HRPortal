@@ -6024,6 +6024,13 @@ table.dataTable.no-footer {
     /* text-shadow: 1px 1px 1px rgba(200,200,200,.1); */
     font-weight: 500;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+   -webkit-text-fill-color: white !important;
+}
 
 .loginpage form .input,
 .loginpage input[type=text] {
@@ -6040,7 +6047,7 @@ table.dataTable.no-footer {
 .loginpage form input[type=checkbox],
 .loginpage input[type=text] {
     color: #ffffff;
-    background: transparent;
+    background: transparent !important;
     font-weight: 500;
 }
 
