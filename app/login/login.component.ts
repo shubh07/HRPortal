@@ -1,8 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ControlMessages } from '../control-messages.component';
-import { ValidationService } from '../validation.service';
-import { ROUTER_DIRECTIVES, RouterConfig } from '@angular/router';
+import { ValidationService } from '../services/validation.service';
+import { ROUTER_DIRECTIVES, RouterConfig, Router } from '@angular/router';
 @Component({
   selector: 'login',
   directives: [REACTIVE_FORM_DIRECTIVES, ControlMessages,ROUTER_DIRECTIVES],
@@ -12,7 +12,7 @@ import { ROUTER_DIRECTIVES, RouterConfig } from '@angular/router';
 export class LoginComponent {
 userForm: any;
   
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,public router: Router) {
       
     this.userForm = this.formBuilder.group({
       'email': ['', [Validators.required, ValidationService.emailValidator]],
@@ -22,7 +22,8 @@ userForm: any;
   
   saveUser() {
     if (this.userForm.dirty && this.userForm.valid) {
-      alert(`email: ${this.userForm.value.name} password: ${this.userForm.value.email}`);
+      localStorage.setItem('id_token', `email: ${this.userForm.value.email} password: ${this.userForm.value.password}`);
+      this.router.navigate(['/dashboard']);
     }
   }
 }
