@@ -1058,7 +1058,7 @@ a:focus {
 .page-topbar .quick-area .pagetitle div {
     height: 5px;
     width: 100%;
-    padding-left: 33px;
+    padding-left: 39px;
     position: absolute;
     content: " ";
     bottom: -10px;
@@ -1526,7 +1526,7 @@ a:focus {
 
 .page-sidebar {
     height: 100%;
-    width: 200px;
+    width: 239px;
     position: fixed;
     padding: 0px;
     background-color: #37474F;

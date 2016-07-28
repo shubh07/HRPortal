@@ -2,23 +2,14 @@
 <div class="page-topbar">
 <div class='logo-area'>
 </div>
-<div class='quick-area'>
-    <div class='pull-left slantit'>
-        <ul class="info-menu left-links list-inline list-unstyled">
-            <li class="sidebar-toggle-wrap">
-                <a href data-toggle="sidebar" class="sidebar_toggle" ng-click="app.settings.menuFolded = !app.settings.menuFolded; menuChatToggle('menu',app.settings.menuFolded) ">
-                    <i class="material-icons">menu</i>
-                </a>
-            </li>
-        </ul>
-    </div>
+<div class='quick-area'>   
     <div class="pull-left pagetitle">
         <span class='line'></span>
         <h1>Dashboard</h1>
         <div></div>
     </div>    
    
-    <div class='pull-right quickright'>
+    <!--<div class='pull-right quickright'>
         <ul class="info-menu right-links list-inline list-unstyled">
             
             <li class="dropdown profile tab" uib-dropdown>
@@ -27,8 +18,7 @@
                    
                     <span class="profile-status available"></span>
                     
-                        <!-- <span class='hidden-sm hidden-md hidden-xs'>John Carter </span>  -->
-                        <!-- <i class="material-icons hidden-md hidden-sm hidden-xs">expand_more</i> -->
+                      
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right profile animated fadeIn">
                     <li>
@@ -60,7 +50,63 @@
             </li>
         </ul>
         
-    </div>
+    </div>-->
 </div>
 <!-- END TOPBAR -->
+</div>
+<!-- START CONTAINER -->
+
+<div class="page-container row-fluid" ui-sectionbox ng-controller="ModalDemoCtrl">
+
+  <!-- leftbar -->
+	 <div class="page-sidebar">
+          <div class="profile-info">
+        <div class="profile-image col-md-12 col-sm-12 col-xs-12 text-center">
+            <a ui-sref="app.ui.profile">
+                <img src="http://www.quovantis.com/images/team/7bef9ce1-015a-4812-a5db-b4df6c7c14f8.jpg" class="img-responsive">
+                
+            </a>
+        </div>
+        <div class="profile-details col-md-12 col-sm-12 col-xs-12">
+            <h3>
+                    <a ui-sref="app.ui.profile">Gourav Garg</a>
+
+                    <!-- Available statuses: online, idle, busy, away and offline -->
+                </h3>
+            <p class="profile-title">Senior Software Engineer</p>
+        </div>
+    </div>
+    <nav ui-nav>
+        <div id="main-menu-wrapper">
+        <!-- list -->
+<ul class="wraplist wrapper-menu">
+   
+    <li ui-sref-active="active">
+        <a ui-sref="app.dashboard" class="nosub">
+            <i class="material-icons">face</i>
+            <span class="title">Profile</span>
+        </a>
+    </li>
+ <li ui-sref-active="active">
+        <a ui-sref="app.dashboard" class="nosub">
+            <i class="material-icons">contacts</i>
+            <span class="title">Address Book</span>
+        </a>
+    </li>
+    <li ui-sref-active="active">
+        <a ui-sref="app.dashboard" class="nosub">
+            <i class="material-icons">exit_to_app</i>
+            <span class="title">Sign Out</span>
+        </a>
+    </li>
+
+                     
+                 
+
+</ul>
+        </div>
+<!-- / list -->
+
+    </nav>
+     </div>
 </div>

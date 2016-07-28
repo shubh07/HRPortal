@@ -3,8 +3,11 @@ import { DashBoard }  from './dashboard/dashboard';
 import { LoginComponent }    from './login/login.component';
 const routes: RouterConfig = [
   { path: '', redirectTo: 'login', terminal: true},
-  { path: 'dashboard', component: DashBoard },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },  
+  { 
+    path: 'dashboard', 
+    component: DashBoard
+ }
 ];
 export const appRouterProviders = [
   provideRouter(routes)
