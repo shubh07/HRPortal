@@ -3,27 +3,40 @@ import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormGroup, Validators } from '@a
 import { ControlMessages } from '../control-messages.component';
 import { ValidationService } from '../services/validation.service';
 import { ROUTER_DIRECTIVES, RouterConfig, Router } from '@angular/router';
+
+//import schemas
+import {LoginUser} from '../schemas/Users.schema';
+
+//import service
+import {AuthenticationService} from '../services/authentication.service'
+
 @Component({
   selector: 'login',
+  providers: [AuthenticationService],
   directives: [REACTIVE_FORM_DIRECTIVES, ControlMessages,ROUTER_DIRECTIVES],
   styleUrls: ['./node_modules/font-awesome/css/font-awesome.css'],
   templateUrl: './app/login/login.html'
 })
 export class LoginComponent {
-userForm: any;
+    userForm: any;
+    public user = new LoginUser('','');
+    public errorMsg = '';
   
-  constructor(private formBuilder: FormBuilder,public router: Router) {
+  constructor(private formBuilder: FormBuilder,public router: Router, private _service: AuthenticationService) {
       
     this.userForm = this.formBuilder.group({
       'email': ['', [Validators.required, ValidationService.emailValidator]],
-      'password': ['', [Validators.required, Validators.minLength(10)]]
+      'password': ['', [Validators.required, Validators.minLength(4)]]
     });
   }
-  
-  saveUser() {
-    if (this.userForm.dirty && this.userForm.valid) {
-      localStorage.setItem('id_token', `email: ${this.userForm.value.email} password: ${this.userForm.value.password}`);
-      this.router.navigate(['/dashboard']);
+  login() {
+      if (this.userForm.dirty && this.userForm.valid) {
+          if(!this._service.login(this.user)){
+              this.errorMsg = 'Failed to login';
+          }
+          else
+            this.router.navigate(['/dashboard']);
+      }
     }
-  }
+  
 }
