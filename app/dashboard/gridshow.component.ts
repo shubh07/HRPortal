@@ -13,10 +13,10 @@ import {AuthenticationService} from '../services/authentication.service'
   selector: 'home',
     providers: [AuthenticationService],
   directives: [ CORE_DIRECTIVES,AgGridNg2],
- templateUrl: './app/dashboard/dashboard.html',
+ templateUrl: './app/dashboard/gridshow.html',
  styles: ['.toolbar button {margin: 2px; padding: 0px;}'],
 })
-export class DashBoard {
+export class GridShow {
   jwt: string;
   decodedJwt: string;
   response: string;
