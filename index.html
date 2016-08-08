@@ -1,7 +1,7 @@
 <html>
   <head>
     <!-- Set the base href -->
-   
+   <script>document.write('<base href="' + document.location + '" />');</script>
    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Quovantis HR Portal</title>
@@ -29,7 +29,6 @@
       System.import('app')
             .catch(function(err){ console.error(err); });
     </script>
-     <base href="/">
   </head>
   <body>
     <my-app>loading...</my-app>

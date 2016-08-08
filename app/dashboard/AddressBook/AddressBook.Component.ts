@@ -1,59 +1,42 @@
 import { Component } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router,ROUTER_DIRECTIVES } from '@angular/router';
 import {AgGridNg2} from 'ag-grid-ng2/main';
 import {GridOptions} from 'ag-grid/main';
-import ProficiencyFilter from '../data/proficiencyFilter';
-import SkillFilter from '../data/skillFilter';
-import RefData from '../data/refData';
+import ProficiencyFilter from '../../data/proficiencyFilter';
+import SkillFilter from '../../data/skillFilter';
+import RefData from '../../data/refData';
 
-import {AuthenticationService} from '../services/authentication.service'
+import {AuthenticationService} from '../../services/authentication.service'
 
 @Component({
-  selector: 'home',
-    providers: [AuthenticationService],
+  selector: 'dashboard-control',
+  templateUrl: './app/dashboard/addressbook/addressbook.html',
   directives: [ CORE_DIRECTIVES,AgGridNg2],
- templateUrl: './app/dashboard/gridshow.html',
- styles: ['.toolbar button {margin: 2px; padding: 0px;}'],
+  styles: ['.toolbar button {margin: 2px; padding: 0px;}']
 })
-export class GridShow {
-  jwt: string;
-  decodedJwt: string;
-  response: string;
-  api: string;
+export class AddressBookComponent {
+  
   private gridOptions: GridOptions;
   private showGrid: boolean;
   private rowData: any[];
   private columnDefs: any[];
   private rowCount: string;
-
-  constructor(public router: Router, private _service:AuthenticationService) {
+  
+  constructor() {    
         this.gridOptions = <GridOptions>{};
         this.createRowData();
         this.createColumnDefs();
         this.showGrid = true;
   }
-
-  ngOnInit(){
-       if(!this._service.isUserLoggedIn())
-       {           
-          this.router.navigate(['/login']);
-       }
-  }
  
-    logout() {
-        this._service.logout();
-        this.router.navigate(['/login']);
-    }
-    
     private createRowData() {
         var rowData: any[] = [];
 
-        for (var i = 0; i < 200; i++) {
+        for (var i = 0; i < 100; i++) {
             var countryData = RefData.countries[i % RefData.countries.length];
-           var designation = 'Software Engineer';
             rowData.push({
-                name: RefData.dataForGrid[i].Name,//RefData.firstNames[i % RefData.firstNames.length] + ' ' + RefData.lastNames[i % RefData.lastNames.length],
+                name: RefData.firstNames[i % RefData.firstNames.length] + ' ' + RefData.lastNames[i % RefData.lastNames.length],
                 skills: {
                     android: Math.random() < 0.4,
                     html5: Math.random() < 0.4,
@@ -61,24 +44,14 @@ export class GridShow {
                     windows: Math.random() < 0.4,
                     css: Math.random() < 0.4
                 },
-                designation:designation,
-                permanentaddress: RefData.dataForGrid[i].PermanentAddress,//RefData.addresses[i % RefData.addresses.length],
-                currentaddress: RefData.dataForGrid[i].currentaddress,
-                emergencyContact1: RefData.dataForGrid[i].EmergencyContact1,
-                Relation1: RefData.dataForGrid[i].Relation1,
-                ECAddress1: RefData.dataForGrid[i].ECAddress1,
-                ECPhone1: RefData.dataForGrid[i].ECPhone1,
-                EmergencyContact2: RefData.dataForGrid[i].EmergencyContact2,
-                Relation2: RefData.dataForGrid[i].Relation2,
-                ECAddress2: RefData.dataForGrid[i].ECAddress2,
-                ECPhone2: RefData.dataForGrid[i].ECPhone2,
+                address: RefData.addresses[i % RefData.addresses.length],
                 years: Math.round(Math.random() * 100),
                 proficiency: Math.round(Math.random() * 100),
                 country: countryData.country,
                 continent: countryData.continent,
-                language: RefData.dataForGrid[i].Skype,//countryData.language,
-                mobile: RefData.dataForGrid[i].PhoneNumber,//createRandomPhoneNumber(),
-                landline: RefData.dataForGrid[i].LandlineNumber
+                language: countryData.language,
+                mobile: createRandomPhoneNumber(),
+                landline: createRandomPhoneNumber()
             });
         }
 
@@ -94,35 +67,24 @@ export class GridShow {
                 children: [
                     {headerName: "Name", field: "name",
                         width: 150, pinned: true},
-                        {headerName: "Designation", field: "designation",
-                        width: 150, pinned: true}, 
-                   /* {headerName: "Country", field: "country", width: 150,
+                    {headerName: "Country", field: "country", width: 150,
                         cellRenderer: countryCellRenderer, pinned: true,
-                        filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}},*/
+                        filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}},
                 ]
             },
-           /* {
+            {
                 headerName: 'IT Skills',
                 children: [
                     {headerName: "Skills", width: 125, suppressSorting: true, cellRenderer: skillsCellRenderer, filter: SkillFilter},
                     {headerName: "Proficiency", field: "proficiency", width: 120, cellRenderer: percentCellRenderer, filter: ProficiencyFilter},
                 ]
-            },*/
+            },
             {
-                headerName: 'Contact Information',
+                headerName: 'Contact',
                 children: [
-                    {headerName: "Mobile", field: "mobile", width: 100, filter: 'text'},
-                    {headerName: "Land-line (if applicable)", field: "landline", width: 100, filter: 'text'},
-                    {headerName: "Permanent Address", field: "permanentaddress", width: 200, filter: 'text'},
-                    {headerName: "Current Address", field: "currentaddress", width: 150, filter: 'text'},
-                    {headerName: "Emergency Contact 1", field: "emergencyContact1", width: 100, filter: 'text'},
-                    {headerName: "Relation1", field: "Relation1", width: 100, filter: 'text'},
-                {headerName: "ECAddress1", field: "ECAddress1", width: 150, filter: 'text'},
-                {headerName: "ECPhone1", field: "ECPhone1", width: 100, filter: 'text'},
-                {headerName: "Emergency Contact 2", field: "EmergencyContact2", width: 100, filter: 'text'},
-                {headerName: "Relation2", field: "Relation2", width: 100, filter: 'text'},
-                {headerName: "ECAddress2", field: "ECAddress2", width: 150, filter: 'text'},
-                {headerName: "ECPhone2", field: "ECPhone2", width: 100, filter: 'text'},
+                    {headerName: "Mobile", field: "mobile", width: 150, filter: 'text'},
+                    {headerName: "Land-line", field: "landline", width: 150, filter: 'text'},
+                    {headerName: "Address", field: "address", width: 500, filter: 'text'}
                 ]
             }
         ];
@@ -215,8 +177,8 @@ export class GridShow {
     private onColumnEvent($event) {
         console.log('onColumnEvent: ' + $event);
     }
-
 }
+
 
 function skillsCellRenderer(params) {
     var data = params.data;
@@ -270,4 +232,3 @@ function percentCellRenderer(params) {
 
     return eOuterDiv;
 }
-
