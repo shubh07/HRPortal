@@ -5963,7 +5963,7 @@ table.dataTable.no-footer {
     background-color: transparent;
     min-height: 52px;
     width: auto;
-    background-image: url("../img/login-logo.png");
+    background-image: url("../images/login-logo.png");
     background-position: center top;
     background-repeat: no-repeat;
     text-indent: -9999px;
@@ -6112,7 +6112,7 @@ input:-webkit-autofill:active {
 
 body .login_page {
     background-color: #673AB7;
-    background-image: url('../img/bg3.png');
+    background-image: url('../images/bg3.png');
     background-attachment: fixed;
     background-size: cover;
     height: 100%;
@@ -8496,7 +8496,7 @@ border-left: 3px solid transparent;
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url("../img/bg3.png");
+    background-image: url("../images/bg3.png");
     background-size: cover;
 }
 
@@ -10014,7 +10014,7 @@ border-left: 3px solid transparent;
     display: inline-block;
     position: relative;
     vertical-align: top;
-    background-image: url('../img/bg3.png');
+    background-image: url('../images/bg3.png');
     background-size: cover;
 }
 
