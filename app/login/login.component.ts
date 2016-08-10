@@ -11,11 +11,11 @@ import {LoginUser} from '../schemas/users.schema';
 import {AuthenticationService} from '../services/authentication.service'
 
 @Component({
+  moduleId: module.id.replace("/dist/", "/app/"),
   selector: 'login',
   providers: [AuthenticationService],
   directives: [REACTIVE_FORM_DIRECTIVES, ControlMessages,ROUTER_DIRECTIVES],
-  styleUrls: ['./node_modules/font-awesome/css/font-awesome.css'],
-  templateUrl: './app/login/login.html'
+  templateUrl: 'login.html'
 })
 export class LoginComponent {
     userForm: any;

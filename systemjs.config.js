@@ -9,7 +9,7 @@
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs',
-    'data':                       'app/data',
+    'data':                       'dist/data',
     'ag-grid-ng2': 'node_modules/ag-grid-ng2',
     'ag-grid-enterprise': 'node_modules/ag-grid-enterprise',
     'ag-grid': 'node_modules/ag-grid'

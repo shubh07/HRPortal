@@ -10,8 +10,9 @@ import RefData from '../../data/refData';
 import {AuthenticationService} from '../../services/authentication.service'
 
 @Component({
+  moduleId: module.id.replace("/dist/", "/app/"),
   selector: 'dashboard-control',
-  templateUrl: './app/dashboard/addressbook/addressbook.html',
+  templateUrl: './addressbook.html',
   directives: [ CORE_DIRECTIVES,AgGridNg2],
   styles: ['.toolbar button {margin: 2px; padding: 0px;}']
 })

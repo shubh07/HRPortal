@@ -5,10 +5,11 @@ import { Router,ROUTER_DIRECTIVES  } from '@angular/router';
 import {AuthenticationService} from '../services/authentication.service'
 
 @Component({
+  moduleId: module.id.replace("/dist/", "/app/"),
   selector: 'home',
     providers: [AuthenticationService],
   directives: [ ROUTER_DIRECTIVES],
- templateUrl: './app/dashboard/dashboard.html'
+ templateUrl: './dashboard.html'
 })
 export class DashBoard {
   jwt: string;
