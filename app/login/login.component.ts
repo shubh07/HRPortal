@@ -5,7 +5,7 @@ import { ValidationService } from '../services/validation.service';
 import { ROUTER_DIRECTIVES, RouterConfig, Router } from '@angular/router';
 
 //import schemas
-import {LoginUser} from '../schemas/Users.schema';
+import {LoginUser} from '../schemas/users.schema';
 
 //import service
 import {AuthenticationService} from '../services/authentication.service'

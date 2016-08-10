@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 //import schemas
-import {LoginUser} from '../schemas/Users.schema';
+import {LoginUser} from '../schemas/users.schema';
 
 var users = [
   new LoginUser('shubham@quovantis.com','Host'),
